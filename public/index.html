@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品列表展示</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+      .product-container {
+          display: flex;
+          flex-wrap: wrap;
+      }
+
+      .product {
+          position: relative;
+          width: 200px;
+          height: 300px;
+          margin: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 10px;
+          box-sizing: border-box;
+          transition: background-color 0.3s; /* 添加平滑过渡效果 */
+      }
+
+      .product:hover {
+          background-color: #e0f7fa; /* 浅蓝色背景 */
+      }
+
+      .product img {
+          width: 100%;
+          height: auto;
+          max-height: 240px;
+      }
+
+      .product .price {
+          margin: 10px 0;
+          font-size: 20px;
+          font-weight: bold;
+      }
+
+      .product .name {
+          font-size: 16px;
+      }
+
+      .search-container {
+          display: flex;
+          justify-content: center;
+          margin: 20px 0;
+      }
+
+      .search-box {
+          width: 400px;
+          padding: 10px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 4px 0 0 4px; /* 圆角只在左边 */
+          outline: none;
+      }
+
+      .search-button {
+          padding: 10px 20px;
+          font-size: 16px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          cursor: pointer;
+          border-radius: 0 4px 4px 0; /* 圆角只在右边 */
+      }
+
+      .search-button:hover {
+          background-color: #0056b3;
+      }
+
+      .product-link {
+          text-decoration: none; /* 去除下划线 */
+          color: inherit; /* 链接颜色与周围文字一致 */
+      }
+
+      .cart-button {
+          padding: 10px 20px;
+          font-size: 16px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          cursor: pointer;
+          margin-left: 10px; /* 与搜索按钮间隔一定距离 */
+      }
+
+      .cart-button:hover {
+          background-color: #119bff; /* 悬停时背景色变为白色 */
+          color: #FFAF50; /* 悬停时文字颜色变为绿色 */
+          border-color: #4CAF50; /* 悬停时边框颜色保持不变 */
+      }
+
+      .add-to-cart {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          width: 30px; /* 设置按钮宽度 */
+          height: 30px; /* 设置按钮高度，与宽度相同使其成为圆形 */
+          border-radius: 50%; /* 50%的边界半径使按钮变为圆形 */
+          text-align: center;
+          padding: 0; /* 调整内边距以确保+号居中 */
+          font-size: 16px;
+          line-height: 28px; /* 调整行高以垂直居中+号 */
+          background-color: #007bff;
+          color: white;
+          border: none;
+          cursor: pointer;
+          transition: background-color 0.3s;
+      }
+
+      .add-to-cart:hover {
+          background-color: #0056b3;
+      }
+
+
+  </style>
+</head>
+<body>
+<div class="search-container">
+  <input type="text" class="search-box" id="searchInput" placeholder="搜索产品...">
+  <button class="search-button" id="searchButton">搜索</button>
+  <button class="cart-button" id="cartButton">购物车</button>
+</div>
+
+<div class="product-container" id="productContainer">
+  <!-- 产品列表将在这里动态生成 -->
+</div>
+<!-- 引入main.js -->
+<script src="./js/main.js"></script>
+</body>
+</html>
