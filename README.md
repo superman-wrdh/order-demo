@@ -1,3 +1,16 @@
+
+### 效果图
+
+## 首页 列表 可以添加购物车，可进入详情页面
+![001.png](doc%2Fimg%2F001.png)
+## 搜索 名字模糊搜索
+![002.png](doc%2Fimg%2F002.png)
+## 购物车 删除购物车，选中结算 下单
+![003.png](doc%2Fimg%2F003.png)
+
+
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
@@ -72,12 +85,5 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
-### 效果图
 
-## 首页 列表 可以添加购物车，可进入详情页面
-![001.png](doc%2Fimg%2F001.png)
-## 搜索 名字模糊搜索
-![002.png](doc%2Fimg%2F002.png)
-## 购物车 删除购物车，选中结算 下单
-![003.png](doc%2Fimg%2F003.png)
 
