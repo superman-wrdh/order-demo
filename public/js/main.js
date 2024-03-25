@@ -1,19 +1,20 @@
-function formatPrice(priceInCents) {
-  return (priceInCents / 100).toFixed(2);
-}
+// function formatPrice(priceInCents) {
+//   return (priceInCents / 100).toFixed(2);
+// }
 
 function addToCart(product) {
   console.log('添加产品到购物车：', product);
-  let cart = localStorage.getItem('shopping-cart');
-  cart = cart ? JSON.parse(cart) : { product_list: [] };
-
-  // 检查产品是否已在购物车中
-  const existingProduct = cart.product_list.find(p => p._id === product._id);
-  if (!existingProduct) {
-    cart.product_list.push(product);
-  }
-
-  localStorage.setItem('shopping-cart', JSON.stringify(cart));
+  //let cart = localStorage.getItem('shopping-cart');
+  // cart = cart ? JSON.parse(cart) : { product_list: [] };
+  //
+  // // 检查产品是否已在购物车中
+  // const existingProduct = cart.product_list.find(p => p._id === product._id);
+  // if (!existingProduct) {
+  //   cart.product_list.push(product);
+  // }
+  //
+  // localStorage.setItem('shopping-cart', JSON.stringify(cart));
+  addCart(product._id);
   alert(`${product.name} 已添加到购物车`);
 }
 
