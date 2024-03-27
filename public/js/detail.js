@@ -37,6 +37,7 @@ function displayProductDetail(product) {
     const productId = getProductIdFromUrl();
     console.log('添加到购物车的产品 ID:', productId);
     addCart(productId);
+    alert('添加成功');
   });
 }
 
