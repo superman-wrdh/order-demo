@@ -5,12 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>产品详情</title>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+      .product-detail {
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 20px;
+          border: 1px solid #cccccc;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          position: relative; /* 为了定位添加到购物车的按钮 */
+      }
+      .add-to-cart, .view-cart {
+          padding: 10px 15px;
+          background-color: #007bff;
+          color: white;
+          text-decoration: none;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+      .add-to-cart {
+          position: absolute;
+          right: 20px;
+          top: 20px;
+      }
+      .view-cart {
+          position: fixed;
+          right: 20px;
+          top: 20px;
+      }
+  </style>
 </head>
 <body>
 <div id="productDetail" class="product-detail">
   <!-- 产品详情将在这里动态生成 -->
+  <button id="addToCartBtn" class="add-to-cart">添加到购物车</button>
 </div>
 
+<button id="viewCartBtn" class="view-cart">查看购物车</button>
+<script src="../js/cart.js"></script>
 <script src="../js/detail.js"></script>
 </body>
 </html>

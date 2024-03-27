@@ -1,38 +1,33 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+//import { InjectModel } from '@nestjs/mongoose';
+//import { Model } from 'mongoose';
 import { Product } from './schemas/product.schema';
+import { productData } from './moke-data';
 
 @Injectable()
 export class ProductsService {
-  constructor(
-    @InjectModel(Product.name) private productModel: Model<Product>,
-  ) {}
+  // constructor(
+  //   @InjectModel(Product.name) private productModel: Model<Product>,
+  // ) {}
 
-  async create(createProductDto: any): Promise<Product> {
-    const createdProduct = new this.productModel(createProductDto);
-    return createdProduct.save();
+  private products: Product[] = productData;
+
+  findAll(): Product[] {
+    return this.products;
   }
 
-  async findByName(name: string): Promise<Product[]> {
-    return this.productModel.find({ name: new RegExp(name, 'i') }).exec();
+  findByName(name: string): Product[] {
+    return this.products.filter((product) => product.name.includes(name));
   }
 
-  async findAll(): Promise<Product[]> {
-    return this.productModel.find().exec();
-  }
-
-  async findOne(id: string): Promise<Product> {
-    return this.productModel.findById(id).exec();
-  }
-
-  async update(id: string, updateProductDto: any): Promise<Product> {
-    return this.productModel
-      .findByIdAndUpdate(id, updateProductDto, { new: true })
-      .exec();
-  }
-
-  async delete(id: string): Promise<any> {
-    return this.productModel.deleteOne({ _id: id }).exec();
+  findOne(name: string): Product {
+    const products = this.products.filter((product) =>
+      product._id.includes(name),
+    );
+    if (products.length > 0) {
+      return products[0];
+    } else {
+      return null;
+    }
   }
 }
