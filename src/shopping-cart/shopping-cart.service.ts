@@ -1,42 +1,61 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import {
-  ShoppingCart,
-  ShoppingCartDocument,
-} from './schemas/shopping-cart.schema';
+import { ShoppingCartItem } from './schemas/shopping-cart.schema';
 
 @Injectable()
 export class ShoppingCartService {
-  constructor(
-    @InjectModel(ShoppingCart.name)
-    private shoppingCartModel: Model<ShoppingCartDocument>,
-  ) {}
-
-  async create(createDto: any): Promise<ShoppingCart> {
-    const createdCart = new this.shoppingCartModel(createDto);
-    return createdCart.save();
+  private shoppingCart: ShoppingCartItem[] = [];
+  create(
+    productId: string,
+    quantity: number,
+    price: number,
+    userId: string,
+    name: string,
+    img_url: string,
+  ) {
+    const cartItemId = (Math.random() * 1000000000).toString();
+    const newCartItem = new ShoppingCartItem(
+      cartItemId,
+      productId,
+      quantity,
+      price,
+      userId,
+      name,
+      img_url,
+    );
+    this.shoppingCart.push(newCartItem);
+    return cartItemId;
   }
 
-  async findAll(): Promise<ShoppingCart[]> {
-    return this.shoppingCartModel.find().exec();
+  // findById(id: string): ShoppingCartDocument {}
+  findByProductId(cartItemId: string): ShoppingCartItem {
+    const carts = this.shoppingCart.filter(
+      (item) => item.productId === cartItemId,
+    );
+    if (carts.length > 0) {
+      return carts[0];
+    }
+    return null;
   }
 
-  async findOne(id: string): Promise<ShoppingCartDocument> {
-    return this.shoppingCartModel.findById(id).exec();
+  findAll(): ShoppingCartItem[] {
+    return this.shoppingCart;
+  }
+  update(cartItemId: string, quantity: number) {
+    const cartItemIndex = this.shoppingCart.findIndex(
+      (item) => item.id === cartItemId,
+    );
+    if (cartItemIndex > -1) {
+      this.shoppingCart[cartItemIndex].quantity = quantity;
+    }
   }
 
-  async findByProductId(productId: string): Promise<ShoppingCartDocument> {
-    return this.shoppingCartModel.findOne({ productId }).exec();
-  }
-
-  async update(id: string, updateDto: any): Promise<ShoppingCart> {
-    return this.shoppingCartModel
-      .findByIdAndUpdate(id, updateDto, { new: true })
-      .exec();
-  }
-
-  async delete(id: string): Promise<any> {
-    return this.shoppingCartModel.deleteOne({ _id: id }).exec();
+  // delete(id: string){
+  delete(cartItemId: string) {
+    const cartItemIndex = this.shoppingCart.findIndex(
+      (item) => item.id === cartItemId,
+    );
+    if (cartItemIndex > -1) {
+      this.shoppingCart.splice(cartItemIndex, 1);
+    }
   }
 }

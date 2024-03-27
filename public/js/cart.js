@@ -45,7 +45,7 @@ function showCart() {
         <p>价格: ￥${formatPrice(item.price)}</p>
         <p>数量: ${item.quantity}</p>
       </div>
-      <button onclick="removeItem('${item._id}')">删除</button>
+      <button onclick="removeItem('${item.id}')">删除</button>
     `;
       cartElement.appendChild(itemElement);
       // 在displayCartItems函数内，创建复选框后：

@@ -24,7 +24,7 @@ function displayProductDetail(product) {
         <img src="${product.img_url}" alt="${product.name}" style="max-width: 100%; height: auto;">
         <p>价格：￥${(product.price / 100).toFixed(2)}</p>
         <p>类别：${product.category}</p>
-        <video src="${product.video_url}" controls style="max-width: 100%;"></video>
+      
     `;
 }
 
