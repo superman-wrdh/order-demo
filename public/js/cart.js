@@ -38,7 +38,7 @@ function showCart() {
       itemElement.classList.add('cart-item');
 
       itemElement.innerHTML = `
-      <input type="checkbox" class="cart-item-checkbox" data-price="${item.price}" data-quantity="${item.quantity}" data-product-id="${item._id}">
+      <input type="checkbox" class="cart-item-checkbox" data-price="${item.price}" data-quantity="${item.quantity}" data-product-id="${item.id}">
       <img src="${item.img_url}" alt="${item.name}">
       <div>
         <h3>${item.name}</h3>
